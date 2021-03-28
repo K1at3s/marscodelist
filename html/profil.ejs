@@ -1,0 +1,55 @@
+<%- include('ek/header', {bot, user, path}) %>
+
+
+<div class="card">
+  <div class="card-header">
+    <%=user.username%>#<%=user.discriminator%>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>Profiline hoşgeldin buradan eklediğin kodlarını görebilirsin.</p>
+    </blockquote>
+  </div>
+</div>
+<br>
+<table class="table table-striped table-dark">
+  <% if (bot.ayar.has('kodlar')) { %>
+    <% if (bot.ayar.has(`kkodlar.${user.id}`)) { %>   
+  <thead>
+    <tr>
+      <th scope="col">Ekleyen</th>
+      <th scope="col">Kod Adı</th>
+      <th scope="col">Kod Dili</th>
+      <th scope="col">Görüntüle</th>  
+    </tr>
+  </thead>
+  <% const sorted = Object.keys(bot.ayar.fetch('kodlar')).sort((a, b) => {return}) %>
+  <% const top = sorted.splice(0, Object.keys(bot.ayar.fetch('kodlar')).length) %>
+  <% const map = top.map(x=>x) %>
+	<% for(var i = 0; i < Object.keys(bot.ayar.fetch('kodlar')).length; i++) { %>
+  <% let ad = map[i] %>
+  <%  if (bot.ayar.fetch(`kodlar.${ad}.ekleyen`) === user.username) { %>
+  <tbody>
+    <tr class="kodlarburda">
+      <td><%=bot.ayar.fetch(`kodlar.${ad}.ekleyen`)%></td>
+      <td><%=bot.ayar.fetch(`kodlar.${ad}.kodadı`)%></td>
+      <td><%=bot.ayar.fetch(`kodlar.${ad}.koddili`)%></td>
+      <td><a class="btn btn-dark" href="/kod/<%=bot.ayar.fetch(`kodlar.${ad}.kodadı`)%>">Görüntüle</a></td>
+    </tr>
+  </tbody>
+  <% } %>
+               <% } %>
+   <% } else if (!bot.ayar.has(`kkodlar.${user.id}`)) {%>
+        <h5 style="color:#fff;">
+          Sistemde hiç sana ait kod bulunmuyor.
+   </h5>
+   <% } %>
+<% } else {%>
+   <center><h3 style="color:#fff;">
+     Sistemde hiç sana ait kod bulunmuyor.
+     </h3></center>
+ <% } %>
+</table>
+
+
+<% include ./ek/footer %>

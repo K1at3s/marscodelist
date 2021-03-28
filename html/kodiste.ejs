@@ -1,0 +1,25 @@
+<%- include('ek/header', {bot, user, path}) %>
+<script type="text/javascript">
+document.getElementById("keyalma").classList.add('active');
+</script>
+<div class="container">
+<form method="post">
+  <div class="form-group">
+    <label for="kodadı" style="color:#fff;">İstediğiniz Kod:</label>
+    <input type="text" class="form-control" name="istedigikod" id="istedigikod" aria-describedby="emailHelp" placeholder="İstediğiniz kodu yazın" required>
+  </div>
+  
+
+  <label for="koddili" style="color:#fff;">Kod Dili</label>
+  <select class="custom-select custom-select-lg mb-3" name="koddili" id="koddili" required="required">
+  <option disabled="" selected="">Lütfen bir kod dili seçin.</option>
+  <option value="Discord.js">Discord.js</option>
+  <option value="Discord.js-commando">Discord.js-commando</option>
+</select>
+  
+<br>
+  <button type="submit" class="btn btn-dark" style="margin-bottom:15px;">Kod İste</button><br>
+</form>
+  </div>
+
+<% include ./ek/footer %>

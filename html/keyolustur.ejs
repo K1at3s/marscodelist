@@ -1,0 +1,17 @@
+<%- include('ek/header', {bot, user, path}) %>
+<script type="text/javascript">
+document.getElementById("keyolus").classList.add('active');
+</script>
+<div class="jumbotron">
+<form method="post">
+  <div class="form-group">
+    <label for="userid">Key oluşturmak istediğiniz kişinin id yazın</label>
+    <input type="text" class="form-control" name="userid" id="userid" aria-describedby="emailHelp" required>
+  </div>
+  
+<br>
+  <button type="submit" class="btn btn-success" style="margin-bottom:15px;">Oluştur</button><br>
+</form>
+</div>
+
+<% include ./ek/footer %>
